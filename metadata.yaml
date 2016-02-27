@@ -1,0 +1,32 @@
+_repo: Religio-Medici-Hydriotaphia-and-the-Letter-to-a-Friend_586
+creator:
+  author:
+    agent_name: Browne, Thomas, Sir
+    birthdate: 1605
+    deathdate: 1682
+    gutenberg_agent_id: '304'
+    url: http://www.gutenberg.org/2009/agents/304
+    wikipedia: http://en.wikipedia.org/wiki/Thomas_Browne
+description: ''
+gutenberg_bookshelf:
+- Harvard Classics
+- Banned Books from Anne Haight's list
+gutenberg_issued: '1996-07-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '586'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Medicine -- History'
+- !lcsh 'Medical ethics'
+- !lcc 'PR'
+- !lcsh 'Funeral rites and ceremonies'
+- !lcsh 'Religion and medicine'
+- !lcsh 'Christian life'
+- !lcsh 'Christian ethics'
+- !lcsh 'Essays'
+title: Religio Medici, Hydriotaphia, and the Letter to a Friend
+url: http://www.gutenberg.org/ebooks/586
