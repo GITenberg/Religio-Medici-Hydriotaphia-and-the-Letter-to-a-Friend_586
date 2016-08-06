@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: GmRqR750cFRf+ngQNOXLOiCzuTlArcfVR3k+M89sthO6PXKMgAefKyg0rTP/rEULRAq+myhDsiwXz/OZvXRmE011+S/IJdztdbIXHouy4Sm2Gxz9W6dSdvb1Hmw0cbATKi0L2RiUu7d/6oejD9cj5uVYK8I+5DATx9wZAOgom5zfCsos8bCdSPxUZ67sUSP46B8OY/ztWp+ZyAMAnuBYLNESDggCcA69wAdSpU+sP2y17Geola6/GRA3Ukd8otTgwPCF4I4F3xqtjsPjH+uGO8LBm2eUnoftB69rIf5Pf6bQCGU9j08p844efpsnqeOdiCX5BsdbBXrN1WtSnk5W7iTiheyVWo6SueoYEdps/1zeJMqFf/lShGDjQj5ncdIUzEkJueYxrQr5knh6Jz96mYGus2XbwWMUySYUC+bGX+ulKABKb2Co+C5dJYGvC1O0cGpPVQu7lIc7zJDgPI/hPE5YdnXjf1V+lCvQIu5NLoPKvJne/EegjztICEG1SJaiOIf/vgE372p7YJwkeof+GknU803+UwP1l8TvpCyECuOcAG0nWlF4TeX77H/0HFeAWqjqsZKqRHiWyuEk06xssTJBS9/9kUTtBgx/wAdgOIGAXk/+n1bzZCnYmfe8Ys6WCa7ljbqXrmnR/9H+vcuUHj8MbFqtbJDE65kmxlOrTnM=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/Religio-Medici-Hydriotaphia-and-the-Letter-to-a-Friend_586
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
