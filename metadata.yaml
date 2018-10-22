@@ -1,5 +1,5 @@
 _repo: Religio-Medici-Hydriotaphia-and-the-Letter-to-a-Friend_586
-_version: 0.2.0
+_version: 0.2.1
 covers:
 - cover_type: generated
   image_path: cover.png
@@ -34,5 +34,6 @@ subjects:
 - !lcsh 'Christian life'
 - !lcsh 'Christian ethics'
 - !lcsh 'Essays'
+- GITenberg
 title: Religio Medici, Hydriotaphia, and the Letter to a Friend
 url: http://www.gutenberg.org/ebooks/586
